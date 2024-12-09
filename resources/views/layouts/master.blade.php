@@ -9,11 +9,11 @@
   <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font/css/materialdesignicons.min.css">
- 
+
   <!-- End layout styles -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="shortcut icon" href="{{ asset('public/assets/images/cc.png') }}" />
-  
+
   @yield('css')
 
 </head>
@@ -22,7 +22,7 @@
       <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         @include('partials.header')
       </nav>
-    <div class="container-fluid page-body-wrapper">
+    <div class="container-fluid page-body-wrapper" style="padding: 20px">
             <div class="content-wrapper">
                  @yield('content')
             </div>
