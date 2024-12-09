@@ -1,10 +1,12 @@
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #001b48;">
   <div class="container">
-    <a class="navbar-brand" href="/">CampusConnect</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    {{-- <a class="navbar-brand" href="/">CampusConnect</a> --}}
+    {{-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
-    </button>
-
+    </button> --}}
+    <div class="d-flex justify-content-center" style="width: 100%">
+        <h2 class="headerTitle">Payment Form</h2>
+    </div>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       {{-- <ul class="navbar-nav ms-auto me-3">
         <li class="nav-item active menu-title">
@@ -51,23 +53,8 @@
 
 
 <style>
-.nav-link {
-  /* text-decoration: none;
-  color: var(--secondary-color);
-  font-weight: 300;
-  border-radius: 8px;
-  padding: 4px 22px;
-  transition: background-color 0.3s, border-color 0.3s, color 0.3s; */
-
-  font-size: 17px;
-  color:#fff !important;
-  margin: 0px 10px;
-}
-
-.nav-link:hover {
-  /* color: #001b48;
-  background-color: var(--secondary-color);
-  border-color: var(--primary-color); */
-}
+    .headerTitle{
+        color: white;
+    }
 
 </style>
