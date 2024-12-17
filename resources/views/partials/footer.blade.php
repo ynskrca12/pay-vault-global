@@ -23,24 +23,24 @@
         </div>
       </div>
 
-      <div class="mt-4 text-center">
+      {{-- <div class="mt-4 text-center">
         <p><strong>Contact Us:</strong></p>
         <p>
           <i class="bi bi-envelope me-2"></i> Email: <a href="mailto:support@company.com" style="color: #fff;">support@company.com</a><br>
           <i class="bi bi-telephone me-2"></i> Phone: +1 (800) 123-4567<br>
           <i class="bi bi-chat-dots me-2"></i> Live Chat: <a href="https://company.com/livechat" style="color: #fff;">Start Chat</a>
         </p>
-      </div>
+      </div> --}}
 
-      <div class="mt-4 text-center">
+      {{-- <div class="mt-4 text-center">
         <a href="/privacy-policy" style="color: #fff; margin-right: 15px;">Privacy Policy</a>
         <a href="/terms-of-service" style="color: #fff;">Terms of Service</a>
-      </div>
+      </div> --}}
 
       <div class="mt-4 text-center">
         <p>
           <i class="bi bi-geo-alt-fill me-2"></i>
-          Headquarters: 123 Business Lane, Suite 400, New York, NY, 10001, USA
+          4 Raven Road, Unit 1c3-524 London E18 1HB United Kingdom
         </p>
       </div>
 

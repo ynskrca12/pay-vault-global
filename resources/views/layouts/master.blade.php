@@ -4,7 +4,8 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>CampusConnect</title>
+  <title>CMDZ CAR</title>
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <!-- plugins:css -->
   <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
@@ -22,7 +23,7 @@
       <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         @include('partials.header')
       </nav>
-    <div class="container-fluid page-body-wrapper" style="padding: 20px">
+    <div class="container-fluid page-body-wrapper">
             <div class="content-wrapper">
                  @yield('content')
             </div>
