@@ -68,9 +68,8 @@
                                 <label for="amount" class="form-label">Amount</label>
                                 <div class="input-group">
                                     <span class="input-group-text"><i class="bi bi-currency-dollar"></i></span>
-                                    <input type="text" id="amount" name="amount" class="form-control"
-                                           placeholder="Amount (e.g., 100.00)" required>
-                                </div>
+                                    <input type="text" id="amount" name="amount" class="form-control" value="{{ request()->get('discounted_price') }}" placeholder="Amount (e.g., 100.00)" required readonly>
+                         </div>
                             </div>
 
                         </div>

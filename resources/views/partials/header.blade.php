@@ -4,8 +4,8 @@
     {{-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button> --}}
-    <div class="d-flex justify-content-center" style="width: 100%">
-        <h2 class="headerTitle">Payment Form</h2>
+    <div class="d-flex" style="width: 100%">
+        <h2 class="headerTitle">CMDZ Car</h2>
     </div>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       {{-- <ul class="navbar-nav ms-auto me-3">
