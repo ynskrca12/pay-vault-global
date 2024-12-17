@@ -141,4 +141,47 @@ class PaymentController extends Controller
         // $gateway = new PaymentGateway();
         // return $gateway->processPayment($payment);
     }
+
+    public function productListPage(){
+        return view('product_list');
+    }//End
+
+    public function productDetail(){
+        return view('product_detail');
+    }//End
+
+    public function add(Request $request)
+    {
+        // Session'dan sepeti al, yoksa boş bir dizi oluştur
+        $cart = session()->get('cart', []);
+
+        // Ürün verilerini istekteki değerlerden al
+        $title = $request->input('title');
+        $description = $request->input('description');
+        $image = $request->input('image');
+        $price = $request->input('price');
+        $quantity = $request->input('quantity', 1);
+
+        // Sepette ürün varsa miktarı artır, yoksa yeni ürün ekle
+        if (isset($cart[$title])) {
+            $cart[$title]['quantity'] += $quantity;
+        } else {
+            $cart[$title] = [
+                'description' => $description,
+                'image' => $image,
+                'price' => $price,
+                'quantity' => $quantity,
+            ];
+        }
+
+        // Güncellenen sepeti session'a kaydet
+        session()->put('cart', $cart);
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Ürün sepete eklendi!',
+            'cart' => $cart
+        ]);
+    }
+
 }
