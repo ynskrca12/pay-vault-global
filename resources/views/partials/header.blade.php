@@ -5,7 +5,9 @@
       <span class="navbar-toggler-icon"></span>
     </button> --}}
     <div class="d-flex" style="width: 100%">
-        <h2 class="headerTitle">CMDZ Car</h2>
+        <a href="{{route('product.list')}}" style="text-decoration: none; color: inherit;">
+            <h2 class="headerTitle">CMDZ Car</h2>
+        </a>
     </div>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       {{-- <ul class="navbar-nav ms-auto me-3">
