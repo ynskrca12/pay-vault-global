@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 use Mollie\Laravel\Facades\Mollie;
 use App\Models\Payment;
 
+use Mollie\Api\MollieApiClient;
+use Illuminate\Support\Facades\Log;
+use Exception;
+
 class MollieController extends Controller
 {
     public function mollie(Request $request){
@@ -16,12 +20,9 @@ class MollieController extends Controller
             $payment = Mollie::api()->payments->create([
                 "amount" => [
                     "currency" => $request->currency,
-                    // "currency" => "GBP",
                    "value"    => number_format((float)$discountedPrice, 2, '.', '')
-                    // "value"    => "10.00"
                 ],
                 "description" => $request->description,
-                // "description" => "lastik",
                 "redirectUrl" => route('success'),
                 "metadata"    => [
                     "order_id" => time(),
@@ -41,33 +42,47 @@ class MollieController extends Controller
 
     }//End
 
-    public function success(Request $request){
+    public function success(Request $request)
+    {
+        try {
+            $paymentId = session()->get('paymentId');
 
-        $paymentId = session()->get('paymentId');
+            if (!$paymentId) {
+                throw new Exception("Payment ID not found in session.");
+            }
 
-        $payment = Mollie::api()->payments->get($paymentId);
 
-        if($payment->isPaid()){
+            $payment = Mollie::api()->payments->get($paymentId);
 
-            $obj = new Payment();
-            $obj->payment_id     = $paymentId;
-            $obj->product_name   = $payment->description;
-            $obj->quantity       = session()->get('quantity');
-            $obj->amount         = $payment->amount->value;
-            $obj->currency       = $payment->amount->currency;
-            $obj->payment_status = "Completed";
-            $obj->payment_method = "Mollie";
+            if ($payment->isPaid()) {
 
-            $obj->save();
+                $paymentRecord = new Payment();
+                $paymentRecord->payment_id = $payment->id;
+                $paymentRecord->product_name = $payment->description;
+                $paymentRecord->quantity = session()->get('quantity');
+                $paymentRecord->amount = $payment->amount->value;
+                $paymentRecord->currency = $payment->amount->currency;
+                $paymentRecord->payment_status = "Completed";
+                $paymentRecord->payment_method = "Mollie";
 
-            session()->forget('paymentId');
-            session()->forget('quantity');
+                $paymentRecord->save();
 
-            echo "Payment is successfull.";
-        }else{
-            return redirect()->route('cancel');
+                session()->forget('paymentId');
+                session()->forget('quantity');
+
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Payment is successful.'
+                ]);
+            } else {
+                Log::warning("Payment with ID $paymentId is not successful.");
+                return redirect()->route('cancel')->with('error', 'Payment was not successful.');
+            }
+        } catch (Exception $e) {
+            Log::error("Error processing payment: " . $e->getMessage());
+            return redirect()->route('cancel')->with('error', 'There was an error processing your payment.');
         }
-    }//End
+    }
 
     public function cancel(){
         echo "Payment is cancelled.";
