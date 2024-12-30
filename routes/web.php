@@ -28,4 +28,8 @@ use Illuminate\Support\Facades\Session;
 Route::post('/cart/add', [PaymentController::class, 'add'])->name('cart.add');
 
 
+Route::post('mollie',[MollieController::class,'mollie'])->name('mollie');
+Route::get('success',[MollieController::class,'success'])->name('success');
+Route::get('cancel',[MollieController::class,'cancel'])->name('cancel');
+
 
