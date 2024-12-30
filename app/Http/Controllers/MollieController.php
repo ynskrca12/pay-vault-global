@@ -44,6 +44,7 @@ class MollieController extends Controller
 
     public function success(Request $request)
     {
+
         try {
             $paymentId = session()->get('paymentId');
 
