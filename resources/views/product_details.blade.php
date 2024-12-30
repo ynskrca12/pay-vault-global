@@ -25,7 +25,7 @@
                     <h4 class="fw-bold">{{ $product['description'] }}</h4>
                     <p><strong>MARKA :</strong> {{ $product['title'] }} <br> </p> {{-- <strong>ÜRÜN KODU :</strong> CMS-1062-04 --}}
                     <p class="text-decoration-line-through text-muted">{{ $product['original_price'] }}</p>
-                    <p class="h4 text-success fw-bold">{{ $product['discounted_price'] }} {{ $product['currency'] }}</p>
+                    <p class="h4 text-success fw-bold">{{ $product['discounted_price'] }}</p>
                     <div class="d-flex mb-3">
                         <select class="form-select w-25" aria-label="Adet Seçimi">
                             <option selected>1</option>
@@ -38,7 +38,6 @@
                             data-description="{{ $product['description'] }}"
                             data-original-price="{{ $product['original_price'] }}"
                             data-discounted-price="{{ $product['discounted_price'] }}"
-                            data-currency="{{ $product['currency'] }}"
                             data-image="{{ $product['image'] }}"
                             onclick="addToCart(this)">
                             SEPETE EKLE
@@ -102,11 +101,10 @@
             const description = element.getAttribute("data-description");
             const originalPrice = element.getAttribute("data-original-price");
             const discountedPrice = element.getAttribute("data-discounted-price");
-            const currency = element.getAttribute("data-currency");
             const image = element.getAttribute("data-image");
 
             // Laravel rotasına yönlendirme
-            const url = `{{ route('cart.index') }}?title=${encodeURIComponent(title)}&description=${encodeURIComponent(description)}&original_price=${encodeURIComponent(originalPrice)}&discounted_price=${encodeURIComponent(discountedPrice)}&currency=${encodeURIComponent(currency)}&image=${encodeURIComponent(image)}`;
+            const url = `{{ route('cart.index') }}?title=${encodeURIComponent(title)}&description=${encodeURIComponent(description)}&original_price=${encodeURIComponent(originalPrice)}&discounted_price=${encodeURIComponent(discountedPrice)}&image=${encodeURIComponent(image)}`;
             window.location.href = url;
         }
     </script>
